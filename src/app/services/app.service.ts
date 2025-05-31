@@ -7,10 +7,16 @@ import { Observable, ReplaySubject, lastValueFrom } from 'rxjs';
 export class AppService {
 
   private _connected:boolean = false;
+  private _userData:any = {
+      name : "Gandalf", 
+      age: 3000,
+      lastActive: -1
+  }
   constructor() {
   }
 
   public login():void{
+    this._userData.lastActive = Date.now();
     this._connected = true;
   }
   
@@ -19,9 +25,6 @@ export class AppService {
   }
 
   public getUserData():Promise<any>{
-    return Promise.resolve({
-      name : "Gandalf", 
-      age: 3000
-    });
+    return Promise.resolve(this._userData);
   }
 }
