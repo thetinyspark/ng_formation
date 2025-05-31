@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { isConnectedGuard } from './guards/is-connected.guard';
+import { userResolver } from './services/user.resolver';
 
 const routeConfig: Routes = [
   {
@@ -9,10 +10,18 @@ const routeConfig: Routes = [
     title: 'Home page'
   },
   {
+    path: 'profile',
+    loadComponent: ():any=> import('./components/profile/profile.component').then(m=>m.ProfileComponent),
+    title: 'User Profile',
+    resolve: {
+      user: userResolver
+    },
+    canActivate: [isConnectedGuard],
+  },
+  {
     path: 'login',
     loadComponent: ():any=> import('./components/login/login.component').then(m=>m.LoginComponent),
-    title: 'Login',
-    canActivate: [isConnectedGuard],
+    title: 'Login'
   },
 ];
 

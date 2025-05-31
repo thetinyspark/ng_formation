@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-login',
@@ -20,9 +21,9 @@ export class LoginComponent {
  
   title:string ="Se connecter";
 
-  constructor(
-  ){}
+  constructor(private _service: AppService){}
 
   async loginHandler() {
+    this._service.login();
   }
 }
