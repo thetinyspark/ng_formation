@@ -1,0 +1,22 @@
+[
+    {"id": 1, "key": "gold", "name":"gold", "combat":false},
+    {"id": 2, "key": "wood", "name":"wood", "combat":false},
+    {"id": 3, "key": "meat", "name":"meat", "combat":false},
+    {"id": 4, "key": "stone", "name":"stone", "combat":false},
+    {"id": 5, "key": "wizard", "name":"wizard", "combat":true},
+    {"id": 6, "key": "wizard", "name":"wizard", "combat":true},
+    {"id": 7, "key": "wizard", "name":"wizard", "combat":true},
+    {"id": 8, "key": "wizard", "name":"wizard", "combat":true},
+    {"id": 9, "key": "knight", "name":"knight", "combat":true},
+    {"id": 10, "key": "knight", "name":"knight", "combat":true},
+    {"id": 11, "key": "knight", "name":"knight", "combat":true},
+    {"id": 12, "key": "knight", "name":"knight", "combat":true},
+    {"id": 13, "key": "archer", "name":"archer", "combat":true},
+    {"id": 14, "key": "archer", "name":"archer", "combat":true},
+    {"id": 15, "key": "archer", "name":"archer", "combat":true},
+    {"id": 16, "key": "archer", "name":"archer", "combat":true},
+    {"id": 17, "key": "monk", "name":"monk", "combat":true},
+    {"id": 18, "key": "monk", "name":"monk", "combat":true},
+    {"id": 19, "key": "monk", "name":"monk", "combat":true},
+    {"id": 20, "key": "monk", "name":"monk", "combat":true}
+]

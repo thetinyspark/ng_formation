@@ -1,0 +1,8 @@
+@font-face {
+    font-family: MotionControl;
+    src: url("../fonts/MotionControl-Bold.otf");
+}
+
+body, html{
+    height: 100%;
+}
