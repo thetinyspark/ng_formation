@@ -1,1 +1,6 @@
-<p>This is the home</p>
+<div class="productsContainer">
+    <div *ngFor="let currentProduct of products" class="product">
+        <h2>{{currentProduct.name}}</h2>
+        <img src={{currentProduct.picture}} />
+    </div>
+</div>

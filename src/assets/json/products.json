@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "FFVII Rebirth", 
+        "price": 50,
+        "picture": "assets/images/rebirth-ps5.jpg", 
+        "device": "PS5", 
+        "trendy": true
+    },
+    {
+        "id": 2,
+        "name": "FFVII Rebirth", 
+        "price": 39.90,
+        "picture": "assets/images/rebirth-steam.jpg", 
+        "device": "STEAM",
+        "trendy": false
+    },
+    {
+        "id": 3,
+        "name": "Clair Obscur Expedition 33", 
+        "price": 39.90,
+        "picture": "assets/images/co33-steam.jpg", 
+        "device": "STEAM", 
+        "trendy": false
+    },
+    {
+        "id": 4,
+        "name": "Clair Obscur Expedition 33", 
+        "price": 49.90,
+        "picture": "assets/images/co33-ps5.jpg", 
+        "device": "PS5", 
+        "trendy": false
+    }
+]
