@@ -21,11 +21,11 @@
             font-size: 1.2rem;
             font-weight: bold;
             color: #fafafa;
-            background-color: #333;
+            background-color: #111;
             text-align: center;
             margin: 0;
             padding: 5px;
-            border: 2px solid #706608;
+            border: 2px solid goldenrod;
             width: 100%;
             box-sizing: border-box;
         }
@@ -42,7 +42,7 @@
             margin-top: 10px;
             font-size: 1rem;
             font-weight: bold;
-            color: #333
+            color: #fafafa
         }
 
         .product .price{
@@ -51,5 +51,5 @@
             margin-top: 10px;
             font-size: 1.5rem;
             font-weight: bold;
-            color: rgb(56, 126, 192);
+            color: orange
         }
