@@ -1,0 +1,8 @@
+<div class="productsContainer">
+    <div *ngFor="let currentProduct of products" class="product"  [routerLink]="['/product', currentProduct.id]">
+        <img src={{currentProduct.picture}} />
+        <h2>{{currentProduct.name}}</h2>
+        <p class="device">Platform: {{currentProduct.device}}</p>
+        <p class="price">Price: {{currentProduct.price}}€</p>
+    </div>
+</div>

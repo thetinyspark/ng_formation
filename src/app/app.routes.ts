@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { CartComponent } from './components/cart/cart.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 // import { isConnectedGuard } from './guards/is-connected.guard';
 // import { userResolver } from './services/user.resolver';
 
@@ -17,7 +18,7 @@ const routeConfig: Routes = [
     title: 'Home page'
   },
   {
-    path: 'catalog',
+    path: 'shop',
     component: ShopComponent,
     title: 'Shop'
   },
@@ -25,6 +26,11 @@ const routeConfig: Routes = [
     path: 'cart',
     component: CartComponent,
     title: 'My Cart'
+  },
+  {
+    path: 'product/:id',
+    component: ProductDetailComponent,
+    title: 'My Product'
   },
   // {
   //   path: 'profile',
