@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { isConnectedGuard } from './guards/is-connected.guard';
-import { userResolver } from './services/user.resolver';
+import { ShopComponent } from './components/shop/shop.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routeConfig: Routes = [
   {
@@ -10,19 +10,20 @@ const routeConfig: Routes = [
     title: 'Home page'
   },
   {
-    path: 'profile',
-    loadComponent: ():any=> import('./components/profile/profile.component').then(m=>m.ProfileComponent),
-    title: 'User Profile',
-    resolve: {
-      user: userResolver
-    },
-    canActivate: [isConnectedGuard],
+    path: 'home',
+    component: HomeComponent,
+    title: 'Home page'
   },
   {
-    path: 'login',
-    loadComponent: ():any=> import('./components/login/login.component').then(m=>m.LoginComponent),
-    title: 'Login'
+    path: 'catalog',
+    component: ShopComponent,
+    title: 'Shop'
   },
+  {
+    path: 'cart',
+    component: CartComponent,
+    title: 'My Cart'
+  }
 ];
 
 export default routeConfig;

@@ -1,36 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgClass, NgFor, NgIf, NgStyle} from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  // changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    NgFor,
-    NgIf, 
-    NgClass,
-    NgStyle, 
-    RouterLink, 
-    FormsModule
-  ],
+  imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  
-
-  private _subscription:Subscription|null = null;
-
-
-  constructor(
-  ){
-  }
-  
+  constructor(){}
   ngOnInit(){}
-
-  ngOnDestroy(){
-  }
+  ngOnDestroy(){}
 }
