@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppService {
 
   public httpService = inject(HttpClient);
+
   constructor() { }
 
   public getProducts():Observable<Product[]>{

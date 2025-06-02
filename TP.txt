@@ -1,0 +1,9 @@
+TP n°4
+
+- Afficher tous les produits dans le shop
+- Ajouter un signal qui permet de calculer le prix total
+de tous les produits. 
+- Ajouter un signal qui contient un taux de TVA à 5%
+- Ajouter un bouton qui permet d'augmenter le taux de TVA de 1% à chaque fois
+- Ajouter un signal qui affiche le prix TTC et qui tient compte du taux de TVA
+

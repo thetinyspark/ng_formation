@@ -1,1 +1,5 @@
-<p>This is the shop</p>
+<app-catalog [products]="products"></app-catalog>
+<p>Prix total: {{totalPrice()}}€</p>
+<p>TVA: {{tva()}}%</p>
+<button (click)="upgradeTVA()">TVA +</button>
+<button (click)="downgradeTVA()">TVA -</button>
