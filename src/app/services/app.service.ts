@@ -39,4 +39,8 @@ export class AppService {
       )
     );
   }
+
+  public isConnected():Promise<boolean>{
+    return Promise.resolve(true);
+  }
 }
