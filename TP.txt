@@ -1,5 +1,5 @@
 TP n°5
 
-- Afficher tous les produits dans le HomeComponent en passant par AppService::getSignalProducts()
+- Afficher le produit avec les produits trendy dans le HomeComponent en passant par AppService::getSignalProducts()
 - Faire en sorte dégager tous les appels à getProducts() au sein des composants (vous pouvez garder l'appel à getProducts())
 au sein du service, mais cela devenir une méthode privée. 
