@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, Signal, signal } from '@angular/core';
 import { Product } from '../models/product.model';
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -9,11 +9,33 @@ import { HttpClient } from '@angular/common/http';
 export class AppService {
 
   public httpService = inject(HttpClient);
+  private _products = signal<Product[]>([]);
 
-  constructor() { }
+  constructor() { 
+    this.refresh();
+  }
+
+  public refresh():void{
+    this.httpService.get<Product[]>("assets/json/products.json").subscribe( 
+      (products:Product[])=>{
+        this._products.set(products);
+      }
+    );
+
+    setTimeout( 
+      ()=>{
+        this.refresh();
+      }, 
+      10000
+    );
+  }
 
   public getProducts():Observable<Product[]>{
     return this.httpService.get<Product[]>("assets/json/products.json");
+  }
+
+  public getSignalProducts():Signal<Product[]>{
+    return this._products;
   }
 
   public getProductById(id:number):Observable<Product|null>{
