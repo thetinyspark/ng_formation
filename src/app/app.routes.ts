@@ -3,6 +3,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { isConnectedGuard } from './guards/is-connected.guard';
 // import { isConnectedGuard } from './guards/is-connected.guard';
 // import { userResolver } from './services/user.resolver';
 
@@ -23,6 +24,7 @@ const routeConfig: Routes = [
     title: 'Shop'
   },
   {
+    canActivate: [isConnectedGuard],
     path: 'cart',
     component: CartComponent,
     title: 'My Cart'
