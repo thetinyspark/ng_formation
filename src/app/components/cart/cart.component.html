@@ -1,1 +1,35 @@
-<p>This is the cart</p>
+@if(products.length > 0){
+<table class="productsContainer">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>PRICE</th>
+        <th>PLATFORM</th>
+        <th>THUMB</th>
+    </tr>
+    <tr *ngFor="let currentProduct of products" class="product">
+        <td>
+            <p>{{currentProduct.id}}</p>
+        </td>
+        <td>
+            <p>{{currentProduct.name}}</p>
+        </td>
+        <td>
+            <p>{{currentProduct.device}}</p>
+        </td>
+        <td>
+            <img src={{currentProduct.picture}} />
+        </td>
+        <td>
+            <p>{{currentProduct.price}}€</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4"></td>
+        <td>{{totalPrice}}€</td>
+    </tr>
+</table>
+}
+@else{
+    <p>EMPTY CART</p>
+}

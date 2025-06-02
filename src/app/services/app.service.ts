@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppService {
 
+  private _cartProductIds:number[] = [];
   public httpService = inject(HttpClient);
   constructor() { }
 
@@ -25,7 +26,17 @@ export class AppService {
     );
   }
 
+  public addToCart(product:Product):void{
+    this._cartProductIds.push(product.id);
+  }
+
   public getCart():Observable<Product[]>{
-    return this.httpService.get<Product[]>("assets/json/cart.json");
+    return this.getProducts().pipe(
+      map( 
+        (products) => {
+          return products.filter( p=> this._cartProductIds.includes(p.id))
+        }
+      )
+    );
   }
 }

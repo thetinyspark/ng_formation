@@ -26,6 +26,11 @@ export class ProductDetailComponent {
     )
   }
 
+  public addToCart():void{
+    if( this.currentProduct !== null )
+      this._appService.addToCart(this.currentProduct);
+  }
+
   ngOnInit(){
     this._route.paramMap.subscribe(
       (params)=>{
