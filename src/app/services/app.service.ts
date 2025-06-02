@@ -16,7 +16,8 @@ export class AppService {
   }
 
   public refresh():void{
-    this.httpService.get<Product[]>("assets/json/products.json").subscribe( 
+    const url = "assets/json/products.json?rand="+Math.round(Math.random() * 1000);
+    this.httpService.get<Product[]>(url).subscribe( 
       (products:Product[])=>{
         this._products.set(products);
       }
@@ -26,11 +27,11 @@ export class AppService {
       ()=>{
         this.refresh();
       }, 
-      10000
+      5000
     );
   }
 
-  public getProducts():Observable<Product[]>{
+  private getProducts():Observable<Product[]>{
     return this.httpService.get<Product[]>("assets/json/products.json");
   }
 

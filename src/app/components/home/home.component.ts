@@ -1,7 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { AppService } from '../../services/app.service';
-import { Product } from '../../models/product.model';
-import { NgFor, NgForOf } from '@angular/common';
+import {  NgForOf } from '@angular/common';
 import { CatalogComponent } from '../catalog/catalog.component';
 
 @Component({
@@ -13,15 +12,15 @@ import { CatalogComponent } from '../catalog/catalog.component';
 })
 export class HomeComponent {
   private _appService = inject(AppService);
-  public products:Product[] = [];
+  private _allProducts = this._appService.getSignalProducts();;
+  public products = computed( 
+    ()=>{
+      return this._allProducts().filter(p=>p.trendy == true);
+    }
+  );
+   
 
   constructor(){}
-  ngOnInit(){
-    this._appService.getProducts().subscribe(
-      (data:Product[])=>{
-        this.products = data.filter( p=>p.trendy == true );
-      }
-    );
-  }
+  ngOnInit(){}
   ngOnDestroy(){}
 }

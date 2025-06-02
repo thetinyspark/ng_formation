@@ -1,9 +1,7 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../../models/product.model';
 import { NgIf } from '@angular/common';
 import { AppService } from '../../services/app.service';
-import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,16 +13,13 @@ import { firstValueFrom } from 'rxjs';
 export class ProductDetailComponent {
   private _productId = signal<number>(0);
   private _appService = inject(AppService);
-  public currentProduct:Product|null = null;
-
-
-  constructor( private _route:ActivatedRoute){
-    effect(
-      async ()=>{
-        this.currentProduct = await firstValueFrom(this._appService.getProductById(this._productId()));
-      }
-    )
-  }
+  private _allProducts = this._appService.getSignalProducts();
+  public currentProduct = computed( 
+    ()=>{
+      return this._allProducts().find(p=>p.id == this._productId()) || null;
+    }
+  );
+  constructor( private _route:ActivatedRoute){}
 
   ngOnInit(){
     this._route.paramMap.subscribe(
