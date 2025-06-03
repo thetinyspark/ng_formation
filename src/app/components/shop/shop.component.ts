@@ -1,6 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { AppService } from '../../services/app.service';
 import { CatalogComponent } from '../catalog/catalog.component';
+import { DummyService } from '../../services/dummy.service';
 
 @Component({
   selector: 'app-shop',
@@ -11,6 +12,7 @@ import { CatalogComponent } from '../catalog/catalog.component';
 })
 export class ShopComponent {
   private _appService = inject(AppService);
+  private _dummy = inject(DummyService);
   public products = this._appService.getSignalProducts();
   public totalPrice = computed( 
     ()=>{
@@ -21,5 +23,7 @@ export class ShopComponent {
   );
   public tva = signal<number>(5);
 
-  constructor(){}
+  constructor(){
+    this._dummy.run();
+  }
 }

@@ -1,5 +1,10 @@
-TP n°5
+TP n°6
 
-- Afficher le produit avec les produits trendy dans le HomeComponent en passant par AppService::getSignalProducts()
-- Faire en sorte dégager tous les appels à getProducts() au sein des composants (vous pouvez garder l'appel à getProducts())
-au sein du service, mais cela devenir une méthode privée. 
+- Créer un Observable qui permet de diffuser les noms de 
+tous les membres de la formation à raison de 1 par seconde. 
+
+- Une fois tous les noms diffusés, clôturer proprement l'Observable
+et son flux de diffusion (observer)
+
+
+BONUS: Faire la même chose avec un Observable de type Subject
