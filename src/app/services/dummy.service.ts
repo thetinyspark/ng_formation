@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { delay, interval, map, Observable, of, ReplaySubject, Subject, take } from 'rxjs';
+import { delay, forkJoin, interval, map, Observable, of, ReplaySubject, Subject, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -135,5 +135,55 @@ export class DummyService {
     //   sub1.unsubscribe();
     //   sub2.unsubscribe();
     // });
+
+    const usersData = [
+      {
+        id: 1, 
+        name: "John"
+      },
+      {
+        id: 2, 
+        name: "Gandalf"
+      }
+    ];
+
+    const usersCitationsData = [
+      {
+        userId: 1, 
+        citation: "Tu ne sais rien du tout Jean Neige"
+      },
+      {
+        userId: 2, 
+        citation: "Un magicien n'est jamais en retard Frodon Sacquet, ni en avance d'ailleurs, il arrive précisemment à l'heure prévue."
+      }
+    ];
+
+    // on se dit que le serveur répond au bout de 5s
+    const obs1 = of(usersData).pipe( delay(5000));
+
+    // on se dit que le serveur répond au bout de 2s
+    const obs2 = of(usersCitationsData).pipe( delay(2000));
+
+    // forkJoin attend que tout soit terminé, en parallèle
+    // combineLatest combiner les dernières valeurs dès lors que l'une d'elle change
+    // zip Combine, les valeurs une par une, dans l'ordre
+    // merge, qui permet d'intercaler les valeurs sans aucune synchronisation
+    
+    const obs3 = forkJoin({profile: obs1, citations: obs2}).pipe(
+      map( 
+        (obj:any)=>{
+          const profile = obj.profile;
+          const citations = obj.citations;
+
+          profile.forEach(
+            (currentProfile:any)=>{
+              currentProfile["citation"] = citations.find( (c:any)=>c.userId == currentProfile.id)?.citation || "";
+            }
+          ); 
+
+          return profile;
+        }
+      )
+    ).subscribe(console.log);
   }
 }
