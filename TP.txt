@@ -5,4 +5,14 @@ TP n°9
 à savoir s'il est contenu entre un maximum et un mininum
 - Combiner ces deux pipes avec le ProductNamePipe et afficher les résultats dans ShopComponent
 
+TP n°10
+
+- Sur le CartComponent, afficher le prix total des produits. 
+- Puis une case avec la TVA à 20%
+- Puis une autre case en dessous avec le total TTC
+
+BONUS: 
+- Sauvegarder les ids des produits contenus dans le Cart avec localStorage et restituer 
+le panier lorsque le service démarre.
+
 
