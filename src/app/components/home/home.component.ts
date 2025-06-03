@@ -14,12 +14,14 @@ import { CatalogComponent } from '../catalog/catalog.component';
 export class HomeComponent {
   private _appService = inject(AppService);
   public products:Product[] = [];
+  public numProducts:number = 0;
 
   constructor(){}
   ngOnInit(){
     this._appService.getProducts().subscribe(
       (data:Product[])=>{
         this.products = data.filter( p=>p.trendy == true );
+        this.numProducts = this.products.length;
       }
     );
   }
