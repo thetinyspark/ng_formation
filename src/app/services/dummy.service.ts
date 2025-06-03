@@ -10,6 +10,11 @@ export class DummyService {
   constructor() { }
   public run():void{
 
+
+    
+
+
+
     // créer un observable à partir de données synchrones à l'aide de l'opérateur of
     /*
     const sub = of(["Amandine","Alexis","Idriss","Giampaolo","Nidhal","Robin","Vincent"]).pipe(
@@ -97,7 +102,7 @@ export class DummyService {
     sub2.unsubscribe();
     */
 
-    const names = ["Amandine","Alexis","Idriss","Giampaolo","Nidhal","Robin","Vincent"];
+    // const names = ["Amandine","Alexis","Idriss","Giampaolo","Nidhal","Robin","Vincent"];
     // const subj = new Subject(); 
     // const subscription = subj.subscribe(console.log);
     // var myInterval = setInterval( 
@@ -137,33 +142,33 @@ export class DummyService {
     //   sub2.unsubscribe();
     // });
 
-    const usersData = [
-      {
-        id: 1, 
-        name: "John"
-      },
-      {
-        id: 2, 
-        name: "Gandalf"
-      }
-    ];
+    // const usersData = [
+    //   {
+    //     id: 1, 
+    //     name: "John"
+    //   },
+    //   {
+    //     id: 2, 
+    //     name: "Gandalf"
+    //   }
+    // ];
 
-    const usersCitationsData = [
-      {
-        userId: 1, 
-        citation: "Tu ne sais rien du tout Jean Neige"
-      },
-      {
-        userId: 2, 
-        citation: "Un magicien n'est jamais en retard Frodon Sacquet, ni en avance d'ailleurs, il arrive précisemment à l'heure prévue."
-      }
-    ];
+    // const usersCitationsData = [
+    //   {
+    //     userId: 1, 
+    //     citation: "Tu ne sais rien du tout Jean Neige"
+    //   },
+    //   {
+    //     userId: 2, 
+    //     citation: "Un magicien n'est jamais en retard Frodon Sacquet, ni en avance d'ailleurs, il arrive précisemment à l'heure prévue."
+    //   }
+    // ];
 
     // on se dit que le serveur répond au bout de 5s
-    const obs1 = of(usersData).pipe( delay(5000));
+    // const obs1 = of(usersData).pipe( delay(5000));
 
     // on se dit que le serveur répond au bout de 2s
-    const obs2 = of(usersCitationsData).pipe( delay(2000));
+    // const obs2 = of(usersCitationsData).pipe( delay(2000));
 
     // forkJoin attend que tout soit terminé, en parallèle
     // combineLatest combiner les dernières valeurs dès lors que l'une d'elle change
@@ -197,13 +202,13 @@ export class DummyService {
     // Cette diffusion en temps réel de la TVA est simulée par tva$
 
 
-    const prices = [10,20,30,40]; 
-    const tva = [5.5,20];
+    // const prices = [10,20,30,40]; 
+    // const tva = [5.5,20];
 
     // on obtient nos prix volatiles en temps réel
-    const prices$ = interval(200).pipe( take(prices.length)).pipe(map( i=>prices[i]));
+    // const prices$ = interval(200).pipe( take(prices.length)).pipe(map( i=>prices[i]));
     // on obtient la TVA en temps réel
-    const tva$ = interval(150).pipe( take(tva.length)).pipe(map( i=>tva[i]));
+    // const tva$ = interval(150).pipe( take(tva.length)).pipe(map( i=>tva[i]));
 
     /*
     combineLatest({price: prices$, tva:tva$}).pipe( 
@@ -224,27 +229,71 @@ export class DummyService {
     */
 
     // const obs$ = of(["coucou","le","monde"]).pipe( delay(4000));
-    const obs$ = new Subject<number>();
-    const signalMsg = toSignal(obs$, {initialValue: 0});
+  //   const obs$ = new Subject<number>();
+  //   const signalMsg = toSignal(obs$, {initialValue: 0});
 
 
-    const totalAchat = computed(
-      ()=>{
-        return signalMsg() + 10;
-      }
-    );
+  //   const totalAchat = computed(
+  //     ()=>{
+  //       return signalMsg() + 10;
+  //     }
+  //   );
 
     
-    setTimeout( ()=>obs$.next(20), 1000);
-    setTimeout( ()=>obs$.next(30), 2000);
-    setTimeout( ()=>obs$.next(40), 3000);
+  //   setTimeout( ()=>obs$.next(20), 1000);
+  //   setTimeout( ()=>obs$.next(30), 2000);
+  //   setTimeout( ()=>obs$.next(40), 3000);
 
-    setInterval( ()=>console.log(totalAchat()), 500 );
+  //   setInterval( ()=>console.log(totalAchat()), 500 );
 
-   toObservable(signalMsg).subscribe(
-    (data)=>{
-      console.log("Nouvel achat: "+data);
+  //  toObservable(signalMsg).subscribe(
+  //   (data)=>{
+  //     console.log("Nouvel achat: "+data);
+  //   }
+  //  );
+  }
+
+  public immutableDataStateTheory(){
+    
+    var component = {
+      lastState: {},
+      state: {},
     }
-   );
+
+    const setComponentState = ( component:any, newState:any)=>{
+      component.lastState = component.state;
+      component.state = { ...component.state, ...newState };
+    };
+
+    const render = ()=>{
+      if( component.lastState !== component.state){
+        console.log("render");
+        component.lastState = component.state;
+      }
+    }
+
+    setComponentState(component, 
+      { 
+        name:"Gandalf", 
+        weapon: "Bâton", 
+        cloth: "Wizard robe"
+      } 
+    );
+
+    // immutable data state
+
+
+    
+    console.log(component.state);
+    render();
+
+    setComponentState(component, 
+      { 
+        name:"Bilbo"
+      } 
+    );
+
+    render();
+    render();
   }
 }
