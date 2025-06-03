@@ -9,6 +9,7 @@ export const isConnectedGuard: CanActivateFn = async (route, state):Promise<bool
   // const router = (()=>inject(Router))();
 
   const loggedIn = await service.isConnected();
-  const products = await firstValueFrom(service.getCart());
-  return loggedIn && products.length > 0;
+  return loggedIn;
+  // const products = await firstValueFrom(service.getCart());
+  // return loggedIn && products.length > 0;
 };

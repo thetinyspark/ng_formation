@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppService {
 
   private _cartProductIds:number[] = [];
+  private _connected:boolean = false;
   public httpService = inject(HttpClient);
   constructor() { }
 
@@ -41,6 +42,14 @@ export class AppService {
   }
 
   public isConnected():Promise<boolean>{
-    return Promise.resolve(true);
+    return Promise.resolve(this._connected);
+  }
+
+  public login(credentials:any):Observable<boolean>{
+    if( credentials.password === "test1234" && credentials.email === "admin@admin.com"){
+      this._connected = true;
+    }
+
+    return of(this._connected);
   }
 }

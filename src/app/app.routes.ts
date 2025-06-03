@@ -4,6 +4,7 @@ import { ShopComponent } from './components/shop/shop.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { isConnectedGuard } from './guards/is-connected.guard';
+import { LoginComponent } from './components/login/login.component';
 // import { isConnectedGuard } from './guards/is-connected.guard';
 // import { userResolver } from './services/user.resolver';
 
@@ -33,6 +34,11 @@ const routeConfig: Routes = [
     path: 'product/:id',
     component: ProductDetailComponent,
     title: 'My Product'
+  },
+  {
+    path: 'login',
+    component:LoginComponent,
+    title: 'Sign in'
   },
   // {
   //   path: 'profile',
