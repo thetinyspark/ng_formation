@@ -8,3 +8,19 @@ et son flux de diffusion (observer)
 
 
 BONUS: Faire la même chose avec un Observable de type Subject
+
+-------------
+
+TP n°7
+
+- Créer un ReplaySubject qui diffuse des nombres correspondants à des prix. 
+
+- souscrire au ReplaySubject et diffuser chaque nombre avec le suffixe "€" 
+(par exemple on reçoit la donnée 10, donc on log 10€)
+
+- souscrire en parralèle au ReplaySubject et diffuser chaque nombre + 20% avec le suffixe "€" 
+(par exemple on reçoit la donnée 10, on lui rajoute 20%  donc on log 12€)
+
+BONUS: 
+- décaler la diffusion des données, si possible avec un setTimeout et encore mieux
+- à l'aide d'un opérateur interval()

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { delay, Observable, of, Subject } from 'rxjs';
+import { delay, interval, map, Observable, of, ReplaySubject, Subject, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,8 @@ export class DummyService {
   public run():void{
 
     // créer un observable à partir de données synchrones à l'aide de l'opérateur of
-    const sub = of(["Amandine","Alexis","Idriss","Giampolo"]).pipe(
+    /*
+    const sub = of(["Amandine","Alexis","Idriss","Giampaolo","Nidhal","Robin","Vincent"]).pipe(
       delay(5000) // ralentit la diffusion des données
     ).subscribe( 
       (data:string[])=>{
@@ -93,6 +94,54 @@ export class DummyService {
     ); 
 
     sub2.unsubscribe();
+    */
+
+    const names = ["Amandine","Alexis","Idriss","Giampaolo","Nidhal","Robin","Vincent"];
+    // const subj = new Subject(); 
+    // const subscription = subj.subscribe(console.log);
+    // var myInterval = setInterval( 
+    //   ()=>{
+    //     if(names.length > 0 )
+    //       subj.next(names.shift());
+    //     else{
+    //       subj.complete();
+    //       clearInterval(myInterval); 
+    //       subscription.unsubscribe();
+    //     }
+    //   }, 
+    //   1000
+    // );
+
+    // const subscription = interval(1000).pipe( take(names.length)).pipe( map( (index)=>names[index])).subscribe(console.log);
+    // of("").pipe( delay(2100)).subscribe( ()=>subscription.unsubscribe());
+    // setTimeout( 
+    //   ()=>{
+    //     subscription.unsubscribe();
+    //   }, 
+    //   4200
+    // )
+
+    const rp = new ReplaySubject();
+    rp.next(names[0]);
+    rp.next(names[1]);
+
+    const sub1 = rp.subscribe((data)=>console.log("sub1:"+data));
+
+    setTimeout( 
+      ()=>{
+        const sub2 = rp.subscribe((data)=>console.log("sub2:"+data));
+      }, 
+      2000
+    );
+
+    setTimeout(
+      ()=>{
+        rp.next(names[2]);
+      }, 
+      3000
+    )
+
+    
 
 
 
