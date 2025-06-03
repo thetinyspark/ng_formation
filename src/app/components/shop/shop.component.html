@@ -3,12 +3,12 @@
     <input [(ngModel)]="gameName" />
     <br/>
 
+
     <label for="">Platform: </label>
     <select name="" id="" (change)="onPlatformChange($event)">
         <option *ngFor="let currentPlatform of platforms" value={{currentPlatform}}>
             {{currentPlatform}}
         </option>
     </select>
-
 </div>
 <app-catalog [products]="products | ProductNamePipe:gameName"></app-catalog>

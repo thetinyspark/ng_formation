@@ -1,0 +1,8 @@
+TP n°9
+
+- Créer un pipe nommé PlatformPipe, qui permet de filtrer les jeux suivants leur plateforme. 
+- Créer un pipe nommé PricePipe, qui permet de filtrer les jeux en fonction de leur prix, 
+à savoir s'il est contenu entre un maximum et un mininum
+- Combiner ces deux pipes avec le ProductNamePipe et afficher les résultats dans ShopComponent
+
+

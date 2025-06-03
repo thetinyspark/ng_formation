@@ -7,8 +7,7 @@ import { Product } from '../models/product.model';
 })
 export class ProductNamePipe implements PipeTransform {
 
-  transform(data: Product[], name:string ): any {
-
+  transform(data: Product[], name:string): any {
     if( name == "")
       return data;
 
