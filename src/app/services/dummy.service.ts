@@ -121,29 +121,19 @@ export class DummyService {
     //   4200
     // )
 
-    const rp = new ReplaySubject();
-    rp.next(names[0]);
-    rp.next(names[1]);
+    // solution au TP n°7
 
-    const sub1 = rp.subscribe((data)=>console.log("sub1:"+data));
+    // const prices = [10,20,30,40];
+    // const rp = new ReplaySubject<number>();
 
-    setTimeout( 
-      ()=>{
-        const sub2 = rp.subscribe((data)=>console.log("sub2:"+data));
-      }, 
-      2000
-    );
+    // const sub1 = rp.subscribe((data:number)=>console.log(data+"€ HT"));
+    // const sub2 = rp.subscribe((data:number)=>console.log( (data*1.2)+"€ TTC"));
 
-    setTimeout(
-      ()=>{
-        rp.next(names[2]);
-      }, 
-      3000
-    )
-
-    
-
-
-
+    // interval(1000).pipe( take(prices.length)).pipe( map((index)=>rp.next(prices[index])) ).subscribe();
+    // of("").pipe( delay(prices.length * 1000)).subscribe( ()=>{
+    //   rp.complete();
+    //   sub1.unsubscribe();
+    //   sub2.unsubscribe();
+    // });
   }
 }
