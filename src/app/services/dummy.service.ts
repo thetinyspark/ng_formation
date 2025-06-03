@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { computed, Injectable } from '@angular/core';
 import { combineLatest, delay, forkJoin, interval, map, Observable, of, ReplaySubject, Subject, take } from 'rxjs';
+import {toSignal, toObservable} from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
@@ -187,7 +188,6 @@ export class DummyService {
       )
     ).subscribe(console.log);
     */
-
     // UNE API en temps réel, qui diffuse le prix d'un bien, les prix sont extrêmement volatiles et peuvent 
     // changer très rapidement. On simule cette écoute en temps réel par le biais d'un observable qui diffuse 
     // des données toutes les 100ms prices$;
@@ -205,10 +205,46 @@ export class DummyService {
     // on obtient la TVA en temps réel
     const tva$ = interval(150).pipe( take(tva.length)).pipe(map( i=>tva[i]));
 
+    /*
     combineLatest({price: prices$, tva:tva$}).pipe( 
       map((obj:any)=>{
         return {total: obj.price * (1+(obj.tva*0.01)), price:obj.price, tva:obj.tva};
       })
-    ).subscribe(console.log);
+    ).subscribe(
+      {
+        error:  (error)=>console.log, 
+        next: (data)=>{
+          console.log("current Data:",data);
+        }, 
+        complete:()=>{
+          console.log("completed !");
+        }
+      }
+    );
+    */
+
+    // const obs$ = of(["coucou","le","monde"]).pipe( delay(4000));
+    const obs$ = new Subject<number>();
+    const signalMsg = toSignal(obs$, {initialValue: 0});
+
+
+    const totalAchat = computed(
+      ()=>{
+        return signalMsg() + 10;
+      }
+    );
+
+    
+    setTimeout( ()=>obs$.next(20), 1000);
+    setTimeout( ()=>obs$.next(30), 2000);
+    setTimeout( ()=>obs$.next(40), 3000);
+
+    setInterval( ()=>console.log(totalAchat()), 500 );
+
+   toObservable(signalMsg).subscribe(
+    (data)=>{
+      console.log("Nouvel achat: "+data);
+    }
+   );
   }
 }
