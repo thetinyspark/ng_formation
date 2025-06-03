@@ -31,7 +31,7 @@ BONUS:
 TP n°8
 
 - Créer un observable qui va télécharger des prix : [10,20,30,40]
-- Créer un observable qui va télécharger des taux de TVA : [5.5, 20]
+- Créer un observable qui va télécharger des taux de TVA : [5.5, 5.5, 20, 20]
 
 - Fusionner les valeurs obtenues par ces deux flux pour créer un troisième observable
 qui diffuse les prix * TVA

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { delay, forkJoin, interval, map, Observable, of, ReplaySubject, Subject, take } from 'rxjs';
+import { combineLatest, delay, forkJoin, interval, map, Observable, of, ReplaySubject, Subject, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -168,7 +168,8 @@ export class DummyService {
     // combineLatest combiner les dernières valeurs dès lors que l'une d'elle change
     // zip Combine, les valeurs une par une, dans l'ordre
     // merge, qui permet d'intercaler les valeurs sans aucune synchronisation
-    
+
+    /*
     const obs3 = forkJoin({profile: obs1, citations: obs2}).pipe(
       map( 
         (obj:any)=>{
@@ -184,6 +185,30 @@ export class DummyService {
           return profile;
         }
       )
+    ).subscribe(console.log);
+    */
+
+    // UNE API en temps réel, qui diffuse le prix d'un bien, les prix sont extrêmement volatiles et peuvent 
+    // changer très rapidement. On simule cette écoute en temps réel par le biais d'un observable qui diffuse 
+    // des données toutes les 100ms prices$;
+
+    // UNE API en temps réel, diffuse, elle, le taux de TVA applicable au bien qui nous intéresse. 
+    // le gouvernement vote des lois plus vite que son ombre et peut changer la TVA toutes les 100ms.
+    // Cette diffusion en temps réel de la TVA est simulée par tva$
+
+
+    const prices = [10,20,30,40]; 
+    const tva = [5.5,20];
+
+    // on obtient nos prix volatiles en temps réel
+    const prices$ = interval(200).pipe( take(prices.length)).pipe(map( i=>prices[i]));
+    // on obtient la TVA en temps réel
+    const tva$ = interval(150).pipe( take(tva.length)).pipe(map( i=>tva[i]));
+
+    combineLatest({price: prices$, tva:tva$}).pipe( 
+      map((obj:any)=>{
+        return {total: obj.price * (1+(obj.tva*0.01)), price:obj.price, tva:obj.tva};
+      })
     ).subscribe(console.log);
   }
 }
