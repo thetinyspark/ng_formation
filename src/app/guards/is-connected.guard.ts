@@ -6,10 +6,7 @@ import { firstValueFrom } from 'rxjs';
 
 export const isConnectedGuard: CanActivateFn = async (route, state):Promise<boolean> => {
   const service = (()=>inject(AppService))();
-  // const router = (()=>inject(Router))();
-
   const loggedIn = await service.isConnected();
-  return loggedIn;
-  // const products = await firstValueFrom(service.getCart());
-  // return loggedIn && products.length > 0;
+  const products = await firstValueFrom(service.getCart());
+  return loggedIn && products.length > 0;
 };

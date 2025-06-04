@@ -7,9 +7,9 @@ import { Product } from '../models/product.model';
 })
 export class ProductNamePipe implements PipeTransform {
 
-  transform(data: Product[], name:string ): any {
+  transform(data: Product[], name:string ): Product[] {
 
-    if( name == "")
+    if( name == " ")
       return data;
 
     return data.filter( p=>p.name.toLowerCase().includes(name.toLowerCase()));

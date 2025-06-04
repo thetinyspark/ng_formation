@@ -32,3 +32,7 @@ ng extract-i18n --format=json --output-path=src/locales --out-file=messages-base
 
 # Orsys formation link
 https://www.orsys.fr/formation/any
+
+
+# Commandes
+ng test --code-coverage
