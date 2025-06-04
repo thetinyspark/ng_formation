@@ -26,8 +26,27 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+# Commandes utiles 
 
+extraction des textes
+
+```bash
 ng extract-i18n --format=json --output-path=src/locales --out-file=messages-base.json
+```
+
+build le projet avec les différentes locales
+```bash
+ng build --localize
+```
+
+test sur un serveur local
+```bash
+npm i -g http-server
+http-server dist/<nom_du_projet>/browser/<locales>
+
+// ne pas oublier de reset le base href = ' <base href="/"> '
+// dans le fichier index.html du dossier visé
+```
 
 
 # Orsys formation link
