@@ -1,36 +1,26 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgClass, NgFor, NgIf, NgStyle} from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { delay, interval, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  // changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    NgFor,
-    NgIf, 
-    NgClass,
-    NgStyle, 
-    RouterLink, 
-    FormsModule
-  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
   
-
-  private _subscription:Subscription|null = null;
-
-
+  private _detector:ChangeDetectorRef = inject(ChangeDetectorRef);
+  public num:number = 0;
   constructor(
   ){
-  }
-  
-  ngOnInit(){}
+    interval(10).pipe( map(()=>this.num++)).subscribe();
 
-  ngOnDestroy(){
+    interval(1000).subscribe( 
+      ()=>{
+        this._detector.markForCheck();
+      }
+    );
   }
 }
