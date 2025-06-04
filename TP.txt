@@ -11,7 +11,7 @@ que vous devrez afficher dans votre CartComponent
 
 BONUS: 
 
-- Modifier votre TimeoutResolver de la façon suivante: 
-utilisez un of() + delay() + take() pour générer de la donnée à partir d'un tableau de nombres
+- Modifiez votre TimeoutResolver de la façon suivante: 
+utilisez un interval() + delay() + take() pour générer de la donnée à partir d'un tableau de nombres
 remplit au hasard. Une fois l'observable généré complété, retournez le résultat et affichez le 
 dans votre CartComponent.

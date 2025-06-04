@@ -6,6 +6,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { isConnectedGuard } from './guards/is-connected.guard';
 import { notEmptyCartGuard } from './guards/not-empty-cart.guard';
 import { getCartResolver } from './resolvers/get-cart.resolver';
+import { timeoutResolver } from './resolvers/timeout.resolver';
 // import { isConnectedGuard } from './guards/is-connected.guard';
 // import { userResolver } from './services/user.resolver';
 
@@ -26,12 +27,13 @@ const routeConfig: Routes = [
     title: 'Shop'
   },
   {
-    canActivate: [isConnectedGuard, notEmptyCartGuard],
+    canActivate: [isConnectedGuard/*, notEmptyCartGuard*/],
     path: 'cart',
     component: CartComponent,
     title: 'My Cart', 
     resolve: {
-      cart: getCartResolver
+      cart: getCartResolver, 
+      msg: timeoutResolver
     },
   },
   {
