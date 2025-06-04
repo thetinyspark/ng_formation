@@ -8,6 +8,7 @@ import { AppService } from '../../services/app.service';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
+    styleUrl: './login.component.css'
 })
 export class LoginComponent {
   private _builder = inject(FormBuilder);
@@ -21,6 +22,14 @@ export class LoginComponent {
   validateEmail(control: AbstractControl) {
     const email = control.value;
     const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    // IMPORTANT les validators doivent être des fonctions pures
+    // çàd qu'elles ne modifient pas les valeurs provenant de l'extérieur, ici control.value
+    // doit rester inchangé. 
+
+    // la logique sous-jacente est que le formbuilder attend 
+    // un objet contenant des erreurs en cas de problème ou null s'il n'y en a pas. 
+    // pour valider un Validator, il faut donc retourner null.
     return isValid ? null : { invalidEmail: true };
   }
 

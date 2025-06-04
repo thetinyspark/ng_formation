@@ -1,0 +1,7 @@
+TP n°11
+
+- Ajouter un element <select> au login-form-component, qui permet de choisir 
+une année de naissance. ( on va dire depuis votre année de naissance jusqu'à aujourd'hui)
+
+- Pour que le champ select soit valide, il faut que l'utilisateur ait au moins 18 ans 
+- Pour que l'utilisateur soit connecté, il faut qu'il ait au moins 18 ans ( modifier un peu l'AppService )
