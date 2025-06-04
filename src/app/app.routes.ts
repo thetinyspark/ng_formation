@@ -4,6 +4,8 @@ import { ShopComponent } from './components/shop/shop.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { isConnectedGuard } from './guards/is-connected.guard';
+import { notEmptyCartGuard } from './guards/not-empty-cart.guard';
+import { getCartResolver } from './resolvers/get-cart.resolver';
 // import { isConnectedGuard } from './guards/is-connected.guard';
 // import { userResolver } from './services/user.resolver';
 
@@ -24,10 +26,13 @@ const routeConfig: Routes = [
     title: 'Shop'
   },
   {
-    canActivate: [isConnectedGuard],
+    canActivate: [isConnectedGuard, notEmptyCartGuard],
     path: 'cart',
     component: CartComponent,
-    title: 'My Cart'
+    title: 'My Cart', 
+    resolve: {
+      cart: getCartResolver
+    },
   },
   {
     path: 'product/:id',

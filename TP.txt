@@ -1,0 +1,17 @@
+TP n°10
+
+- Créer une guard qui s'appelle RandomGuard. 
+En gros, elle vous autorise à vous rendre sur la page une fois sur deux au hasard.
+
+- Créer un resolver qui s'appelle TimeoutResolver. 
+En gros, ce resolver attends xxxx ms avant de retourner une donnée "on va dire un hello world"
+que vous devrez afficher dans votre CartComponent
+
+
+
+BONUS: 
+
+- Modifier votre TimeoutResolver de la façon suivante: 
+utilisez un of() + delay() + take() pour générer de la donnée à partir d'un tableau de nombres
+remplit au hasard. Une fois l'observable généré complété, retournez le résultat et affichez le 
+dans votre CartComponent.

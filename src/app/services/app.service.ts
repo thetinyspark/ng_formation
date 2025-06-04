@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
-import { map, Observable } from 'rxjs';
+import { delay, map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -37,6 +37,8 @@ export class AppService {
           return products.filter( p=> this._cartProductIds.includes(p.id))
         }
       )
+    ).pipe(
+      delay(2000)
     );
   }
 
