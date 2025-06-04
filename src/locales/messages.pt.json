@@ -1,0 +1,7 @@
+{
+  "locale": "pt",
+  "translations": {
+    "6016488227182268665": " Olà, {$ICU} !\n",
+    "2242985706182978458": "{VAR_PLURAL, plural, =0 {Nao tem trends } =1 {Te um jogo em trends} other {Tem  # jogos trends}}"
+  }
+}

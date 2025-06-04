@@ -2,6 +2,6 @@
   "locale": "fr",
   "translations": {
     "6016488227182268665": " Bienvenue, {$ICU} !\n",
-    "2242985706182978458": "{VAR_PLURAL, plural, =0 {Aucune tendance} =1 {Un produit en tendance} other {Il y a # produits tendances}}"
+    "2242985706182978458": "{VAR_PLURAL, plural, =0 {Pas de tendances } =1 {Il y a un jeu en tendances} other {Il y a # jeux en tendances}}"
   }
 }

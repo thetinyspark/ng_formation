@@ -14,6 +14,9 @@
         "locales": {
           "fr": {
             "translation": "src/locales/messages.fr.json"
+          },
+          "pt": {
+            "translation": "src/locales/messages.pt.json"
           }
         }
       },

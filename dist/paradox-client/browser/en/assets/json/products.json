@@ -13,7 +13,7 @@
         "price": 39.90,
         "picture": "assets/images/rebirth-steam.jpg", 
         "device": "STEAM",
-        "trendy": false
+        "trendy": true
     },
     {
         "id": 3,
