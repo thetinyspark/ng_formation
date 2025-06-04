@@ -1,10 +1,10 @@
 <h2>Trends</h2>
 <p i18n>
     Welcome,
-  { numProducts, plural,
+  {numProducts, plural,
     =0 {there is no trendy products}
     =1 {there is one trendy product}
-    other {there is # products}
+    other { there is {{numProducts}} products}
   } !
 </p>
 <app-catalog [products]="products"></app-catalog>
