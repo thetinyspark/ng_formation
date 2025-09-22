@@ -19,7 +19,7 @@
         "id": 3,
         "name": "Clair Obscur Expedition 33", 
         "price": 39.90,
-        "picture": "assets/images/co33-steam.jpg", 
+        "picture": "assets/images/co33-pc.jpg", 
         "device": "STEAM", 
         "trendy": false
     },
