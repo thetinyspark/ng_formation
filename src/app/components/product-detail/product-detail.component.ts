@@ -21,6 +21,6 @@ export class ProductDetailComponent {
        (params)=>{
         this.productId = parseInt(params.get('id') || "-1");
        }
-    )
+    );
   }
 }
