@@ -22,17 +22,17 @@ export class ProductDetailComponent {
 
   async ngOnInit(){
 
-    // version 100% observable
-    this._route.paramMap.subscribe(
-       (params)=>{
-        this.productId = parseInt(params.get('id') || "-1");
-        this._appService.getProductById(this.productId).subscribe( 
-          (data:Product|null)=>{
-            this.currentProduct = data;
-          }
-        );
-       }
-    );
+    // // version 100% observable
+    // this._route.paramMap.subscribe(
+    //    (params)=>{
+    //     this.productId = parseInt(params.get('id') || "-1");
+    //     this._appService.getProductById(this.productId).subscribe( 
+    //       (data:Product|null)=>{
+    //         this.currentProduct = data;
+    //       }
+    //     );
+    //    }
+    // );
 
     // version avec les promesses
     const params = await firstValueFrom( this._route.paramMap );
