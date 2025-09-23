@@ -13,23 +13,17 @@ import { firstValueFrom } from 'rxjs';
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent {
-  private _productId = signal<number>(0);
   private _appService = inject(AppService);
-  public currentProduct:Product|null = null;
+  public currentProduct = this._appService.currentProduct;
 
 
   constructor( private _route:ActivatedRoute){
-    effect(
-      async ()=>{
-        this.currentProduct = await firstValueFrom(this._appService.getProductById(this._productId()));
-      }
-    )
   }
 
   ngOnInit(){
     this._route.paramMap.subscribe(
       (params)=>{
-      this._productId.set(parseInt(params.get('id') || "-1"));
+        this._appService.setCurrentProductId(parseInt(params.get('id') || "-1"));
       }
     );
   }

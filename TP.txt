@@ -1,5 +1,10 @@
-TP n°5
+TP BONUS
 
-- Afficher tous les produits dans le shop en passant par AppService::getSignalProducts()
-- Faire en sorte dégager tous les appels à getProducts() au sein des composants (vous pouvez garder l'appel à getProducts())
-au sein du service, mais cela devenir une méthode privée. 
+Créer un signal privé sur AppService nommé _currentProductID<number>.
+Créer un signal public sur AppService nommé currentProduct<Product>;
+Créer une méthode publique sur AppService nommée setCurrentProductId, 
+qui permettra de MAJ le _currentProductID ainsi que currentProduct (grâce à la réactivité)
+
+- Faire en sorte que ProductDetailComponent utilise le signal currentProduct;
+
+BONUS: currentProduct doit être un signal readOnly

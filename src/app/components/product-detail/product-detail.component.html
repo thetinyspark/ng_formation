@@ -1,7 +1,7 @@
-<div *ngIf="currentProduct != null" class="product">
-    <img src={{currentProduct.picture}} />
-    <h2>{{currentProduct.name}}</h2>
-    <p class="device">Platform: {{currentProduct.device}}</p>
-    <p class="price">Price: {{currentProduct.price}}€</p>
+<div *ngIf="currentProduct() != null" class="product">
+    <img src={{currentProduct()?.picture}} />
+    <h2>{{currentProduct()?.name}}</h2>
+    <p class="device">Platform: {{currentProduct()?.device}}</p>
+    <p class="price">Price: {{currentProduct()?.price}}€</p>
     <p class="buy">Add To Cart</p>
 </div>

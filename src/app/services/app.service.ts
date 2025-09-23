@@ -10,9 +10,15 @@ export class AppService {
 
   public httpService = inject(HttpClient);
   private _products = signal<Product[]>([]);
+  private _current = signal<Product|null>(null);
+  public readonly currentProduct = this._current.asReadonly();
 
   constructor() { 
     this.refresh();
+  }
+
+  public setCurrentProductId(id:number){
+    this._current.set( this._products().find( p=>p.id == id) || null);
   }
 
   public refresh():void{
