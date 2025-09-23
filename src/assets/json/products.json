@@ -10,7 +10,7 @@
     {
         "id": 2,
         "name": "FFVII Rebirth", 
-        "price": 39.90,
+        "price": 42.90,
         "picture": "assets/images/rebirth-steam.jpg", 
         "device": "STEAM",
         "trendy": false

@@ -1,1 +1,10 @@
+
+<div>
+    <label>Trendy only: </label><input type="checkbox" (change)="onTrendChange($event.target)" name="trendy"/> <br/>
+    <label>Price (min):  </label><input type="number" (change)="onPriceMinChange($event.target)" name="princeMin"/> <br/>
+    <label>Price (max):  </label><input type="number" (change)="onPriceMaxChange($event.target)" name="priceMax"/> <br/>
+    <select (change)="onPlatformChange($event.target)">
+        <option value={{currentPlatform}} *ngFor="let currentPlatform of platforms">{{currentPlatform}}</option>
+    </select>
+</div>
 <app-catalog [products]="products"></app-catalog>
