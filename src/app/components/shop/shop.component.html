@@ -3,6 +3,13 @@
     <input [(ngModel)]="gameName" />
     <br/>
 
+    <label for="">Prix (min): </label>
+    <input [(ngModel)]="priceMin" />
+    <br/>
+
+    <label for="">Prix (max): </label>
+    <input [(ngModel)]="priceMax" />
+    <br/>
 
     <label for="">Platform: </label>
     <select name="" id="" (change)="onPlatformChange($event)">
@@ -11,4 +18,4 @@
         </option>
     </select>
 </div>
-<app-catalog [products]="products | ProductNamePipe:gameName"></app-catalog>
+<app-catalog [products]="products | CatalogFilter:getFilters()"></app-catalog>

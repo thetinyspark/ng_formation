@@ -5,11 +5,12 @@ import { CatalogComponent } from '../catalog/catalog.component';
 import { AppService } from '../../services/app.service';
 import { NgFor, NgForOf } from '@angular/common';
 import { ProductNamePipe } from '../../pipes/product-name.pipe';
+import { CatalogPipe } from '../../pipes/catalog.pipe';
 
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [FormsModule, CatalogComponent, NgForOf, ProductNamePipe],
+  imports: [FormsModule, CatalogComponent, NgForOf, ProductNamePipe, CatalogPipe],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.css',
 })
@@ -20,6 +21,9 @@ export class ShopComponent {
   public selectedPlatform = signal<string>('All');
   public products: Product[] = [];
   public gameName: string = '';
+  public priceMin: number = 0;
+  public priceMax: number = 100;
+
 
   constructor() {
     effect(
@@ -40,6 +44,14 @@ export class ShopComponent {
         this.platforms.unshift("All");
       }
     );
+  }
+
+  public getFilters():any{
+    return {
+      priceMin: this.priceMin,
+      priceMax: this.priceMax,
+      gameName: this.gameName,
+    }
   }
 
   ngOnInit() {
