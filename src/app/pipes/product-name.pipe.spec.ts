@@ -1,7 +1,7 @@
 import { Product } from '../models/product.model';
 import { ProductNamePipe } from './product-name.pipe';
 
-fdescribe('ProductNamePipe test suite', () => {
+describe('ProductNamePipe test suite', () => {
 
   const PRODUCTS_MOCK:Product[] = [
       {

@@ -13,7 +13,7 @@ import { AppService } from '../services/app.service';
 import { of } from 'rxjs';
 import { Product } from '../models/product.model';
 
-fdescribe('isConnectedGuard', () => {
+describe('isConnectedGuard', () => {
   const executeGuard: CanActivateFn = (...guardParameters) =>
     TestBed.runInInjectionContext(() => isConnectedGuard(...guardParameters));
 

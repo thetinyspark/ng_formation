@@ -13,19 +13,19 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
-  fit('should create the app', () => {
+  it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  fit(`should have the 'My Video Game Shop' title`, () => {
+  it(`should have the 'My Video Game Shop' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('My Video Game Shop');
   });
 
-  fit('should render title', () => {
+  it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;

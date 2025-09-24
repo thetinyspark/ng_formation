@@ -5,7 +5,7 @@ import { Product } from '../models/product.model';
 import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-fdescribe('AppService', () => {
+describe('AppService', () => {
   const PRODUCTS_MOCK: Product[] = [
     {
       device: 'gameboy color',

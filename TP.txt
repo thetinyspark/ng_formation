@@ -1,4 +1,11 @@
-TP n°13
+TP 
 
-Créez un petit message de bienvenue sur la home. 
-Et traduisez le en français. 
+- Créer une guard qui s'appelle IsCartEmptyGuard. 
+- Créer un faux appService que vous définirez dans l'environnemen de test. 
+( configureTestingModule )
+- La Guard doit renvoyer true si il n'y a aucun produit
+- La Guard doit renvoyer false s'il y a au moins un produit dans le IsCartEmptyGuard
+
+PS: AppService contient déjà une méthode getCart, toutefois, 
+pour éviter de tester la logique de AppService (puisque ce n'est pas un test 
+d'intégration), alors on crée une fausse version de ce service. 
