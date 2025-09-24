@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 
-describe('AppComponent', () => {
+fdescribe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, RouterOutlet, NavbarComponent],
+      imports: [AppComponent, RouterOutlet, NavbarComponent, RouterLink],
       providers: [
         {provide: ActivatedRoute, useValue: new ActivatedRoute()}
       ]

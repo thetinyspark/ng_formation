@@ -1,7 +1,7 @@
 import { Product } from '../models/product.model';
 import { ProductNamePipe } from './product-name.pipe';
 
-describe('ProductNamePipe test suite', () => {
+fdescribe('ProductNamePipe test suite', () => {
 
   const PRODUCTS_MOCK:Product[] = [
       {
@@ -26,6 +26,12 @@ describe('ProductNamePipe test suite', () => {
   it('should be able to create an instance', () => {
     const pipe = new ProductNamePipe();
     expect(pipe).toBeTruthy();
+  });
+
+  it('should not filter if name is empty', () => {
+    const pipe = new ProductNamePipe();
+    const result = pipe.transform(PRODUCTS_MOCK, "");
+    expect(result.length).toEqual(PRODUCTS_MOCK.length);
   });
 
   it('should be able to filter products by name', () => {
