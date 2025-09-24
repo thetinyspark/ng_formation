@@ -2,10 +2,10 @@ import { TestBed } from '@angular/core/testing';
 
 import { AppService } from './app.service';
 import { Product } from '../models/product.model';
-import { of } from 'rxjs';
+import { firstValueFrom, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-describe('AppService', () => {
+fdescribe('AppService', () => {
   const PRODUCTS_MOCK: Product[] = [
     {
       device: 'gameboy color',
@@ -41,5 +41,26 @@ describe('AppService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should returns all products', async () => {
+    // given
+    // when 
+    const products = await firstValueFrom( service.getProducts() );
+
+    // then
+    expect(products).toEqual(PRODUCTS_MOCK);
+  });
+
+  it('should not returns all products', async () => {
+    // given
+    const spy1 = spyOn(fakeHttpClient, "get").and.returnValue(of([]));
+    // when 
+    const products = await firstValueFrom( service.getProducts() );
+
+    // then
+    expect(products).not.toEqual(PRODUCTS_MOCK);
+    expect(products.length).toEqual(0);
+    expect(spy1).toHaveBeenCalled();
   });
 });
